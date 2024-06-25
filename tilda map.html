@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Map with Multiple Markers</title>
+    <style>
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script>
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 10,
+                center: {lat: 39.43155, lng: -0.415014} // Центр карты между двумя адресами
+            });
+
+            var locations = [
+                {lat: 39.4647121, lng: -0.4226679, title: 'Trasteros Trastesoros Xirivella'},
+                {lat: 39.3983873, lng: -0.4073612, title: 'Carrer Hernández Lázaro, 1, Albal, València'}
+            ];
+
+            locations.forEach(function(location) {
+                new google.maps.Marker({
+                    position: location,
+                    map: map,
+                    title: location.title
+                });
+            });
+        }
+    </script>
+</head>
+<body onload="initMap()">
+    <div id="map"></div>
+</body>
+</html>
